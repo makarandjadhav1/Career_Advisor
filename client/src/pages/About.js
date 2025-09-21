@@ -289,8 +289,14 @@ const About = () => {
         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
           Have questions or want to learn more about our platform?
         </Typography>
-        <Typography variant="h6" color="primary.main">
+        <Typography variant="h6" color="primary.main" sx={{ mb: 2 }}>
           contact@careeradvisor.in
+        </Typography>
+        <Typography variant="h6" color="primary.main" sx={{ mb: 2 }}>
+          Mobile: +91 7378948397
+        </Typography>
+        <Typography variant="h6" color="primary.main">
+          Location: Pune, India
         </Typography>
       </Box>
     </Container>

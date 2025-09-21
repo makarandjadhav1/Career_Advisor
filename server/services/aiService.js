@@ -5,21 +5,35 @@ class AIService {
     this.projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
     this.location = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
     
+    // Make Google Cloud optional for basic functionality
     if (!this.projectId) {
-      throw new Error('GOOGLE_CLOUD_PROJECT_ID environment variable is required');
+      console.warn('GOOGLE_CLOUD_PROJECT_ID not set. AI features will be disabled.');
+      this.vertexAI = null;
+      this.model = null;
+      return;
     }
 
-    this.vertexAI = new VertexAI({
-      project: this.projectId,
-      location: this.location,
-    });
+    try {
+      this.vertexAI = new VertexAI({
+        project: this.projectId,
+        location: this.location,
+      });
 
-    this.model = this.vertexAI.getGenerativeModel({
-      model: 'gemini-1.5-pro',
-    });
+      this.model = this.vertexAI.getGenerativeModel({
+        model: 'gemini-1.5-pro',
+      });
+    } catch (error) {
+      console.warn('Failed to initialize Google Cloud AI:', error.message);
+      this.vertexAI = null;
+      this.model = null;
+    }
   }
 
   async generateCareerRecommendations(userProfile, assessmentResults) {
+    if (!this.model) {
+      return this.getDefaultCareerRecommendations(userProfile, assessmentResults);
+    }
+    
     try {
       const prompt = this.buildCareerRecommendationPrompt(userProfile, assessmentResults);
       
@@ -30,11 +44,15 @@ class AIService {
       return this.parseCareerRecommendations(text);
     } catch (error) {
       console.error('Error generating career recommendations:', error);
-      throw new Error('Failed to generate career recommendations');
+      return this.getDefaultCareerRecommendations(userProfile, assessmentResults);
     }
   }
 
   async analyzeSkillsGap(userSkills, careerRequirements) {
+    if (!this.model) {
+      return this.getDefaultSkillsGapAnalysis(userSkills, careerRequirements);
+    }
+    
     try {
       const prompt = this.buildSkillsGapPrompt(userSkills, careerRequirements);
       
@@ -45,11 +63,15 @@ class AIService {
       return this.parseSkillsGapAnalysis(text);
     } catch (error) {
       console.error('Error analyzing skills gap:', error);
-      throw new Error('Failed to analyze skills gap');
+      return this.getDefaultSkillsGapAnalysis(userSkills, careerRequirements);
     }
   }
 
   async generatePersonalizedLearningPath(userProfile, careerGoal, skillsGap) {
+    if (!this.model) {
+      return this.getDefaultLearningPath(userProfile, careerGoal, skillsGap);
+    }
+    
     try {
       const prompt = this.buildLearningPathPrompt(userProfile, careerGoal, skillsGap);
       
@@ -60,7 +82,7 @@ class AIService {
       return this.parseLearningPath(text);
     } catch (error) {
       console.error('Error generating learning path:', error);
-      throw new Error('Failed to generate learning path');
+      return this.getDefaultLearningPath(userProfile, careerGoal, skillsGap);
     }
   }
 
@@ -372,6 +394,66 @@ class AIService {
     }
     
     return age;
+  }
+
+  // Default methods when AI is not available
+  getDefaultCareerRecommendations(userProfile, assessmentResults) {
+    return {
+      recommendations: [
+        {
+          career: 'Software Developer',
+          matchScore: 85,
+          description: 'Based on your technical interests and problem-solving skills',
+          requirements: ['Programming skills', 'Problem solving', 'Team collaboration'],
+          salaryRange: '₹4-12 LPA',
+          growthProspects: 'High'
+        },
+        {
+          career: 'Data Analyst',
+          matchScore: 80,
+          description: 'Suitable for analytical and detail-oriented individuals',
+          requirements: ['Analytical skills', 'Statistical knowledge', 'Communication'],
+          salaryRange: '₹3-8 LPA',
+          growthProspects: 'High'
+        }
+      ],
+      reasoning: 'Basic recommendations based on common career paths for students with your profile.'
+    };
+  }
+
+  getDefaultSkillsGapAnalysis(userSkills, careerRequirements) {
+    return {
+      gaps: [
+        {
+          skill: 'Programming',
+          currentLevel: 'Beginner',
+          requiredLevel: 'Intermediate',
+          learningPath: 'Start with Python basics, then move to web development'
+        }
+      ],
+      recommendations: 'Focus on building practical projects and gaining hands-on experience'
+    };
+  }
+
+  getDefaultLearningPath(userProfile, careerGoal, skillsGap) {
+    return {
+      path: [
+        {
+          phase: 'Foundation',
+          duration: '3-6 months',
+          courses: ['Basic Programming', 'Mathematics for CS'],
+          projects: ['Simple calculator', 'Basic web page']
+        },
+        {
+          phase: 'Intermediate',
+          duration: '6-12 months',
+          courses: ['Data Structures', 'Web Development'],
+          projects: ['Personal portfolio', 'Small web application']
+        }
+      ],
+      estimatedTime: '12-18 months',
+      difficulty: 'Medium'
+    };
   }
 }
 
