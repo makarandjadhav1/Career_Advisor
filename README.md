@@ -197,9 +197,10 @@ personalized-career-advisor/
 
 ## 👥 Team
 
-- **Dr. Priya Sharma** - Lead AI Researcher
-- **Rajesh Kumar** - Product Manager  
-- **Anita Patel** - Career Counselor
+- **Makarand Jadhav**
+- **Dhruv Patil** 
+- **Mayur Nikam** 
+- **Pranav Ture**
 
 ## 📞 Contact
 
