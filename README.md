@@ -22,28 +22,23 @@ An AI-powered personalized career and skills advisor platform designed specifica
 ## 📱 Screenshots
 
 ### Home Page
-![Home Page](./images/home-page.png)
+![Home Page](./images/homepage.png)
 *Welcome to Personalized Career Advisor - Your AI-powered career guidance platform*
-
-### Assessment Interface
-![Assessment](./images/assessment.png)
-*Comprehensive skills and personality assessment interface*
 
 ### Dashboard
 ![Dashboard](./images/dashboard.png)
 *Personalized dashboard with career recommendations and progress tracking*
 
-### About Page
-![About](./images/about-page.png)
-*Learn more about our mission, team, and contact information*
+### Dashboard Alternative View
+![Dashboard Alternative](./images/dashboard1.png)
+*Alternative dashboard view showing different layout and features*
 
 ### Registration
-![Registration](./images/registration.png)
+![Registration](./images/regestration.png)
 *User registration form with detailed profile creation*
 
-### Career Recommendations
-![Recommendations](./images/recommendations.png)
-*AI-powered career path recommendations based on your profile*
+### Additional Features
+*More screenshots coming soon for Assessment, About Page, and Career Recommendations*
 
 ## 🛠️ Technology Stack
 

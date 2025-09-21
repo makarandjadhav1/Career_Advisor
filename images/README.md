@@ -2,16 +2,34 @@
 
 This directory contains images and screenshots for the Personalized Career Advisor project.
 
-## Image Descriptions
+## Current Images
 
-- `home-page.png` - Home page screenshot showing the main landing page
-- `assessment.png` - Skills assessment interface
-- `dashboard.png` - User dashboard with personalized recommendations
-- `about-page.png` - About page with team information and contact details
-- `registration.png` - User registration form
-- `login.png` - User login interface
-- `career-paths.png` - Available career paths display
-- `recommendations.png` - Personalized career recommendations
+- `homepage.png` - Home page screenshot showing the main landing page (224KB)
+- `dashboard.png` - User dashboard with personalized recommendations (80KB)
+- `dashboard1.png` - Alternative dashboard view showing different layout (71KB)
+- `regestration.png` - User registration form (46KB)
+
+## Image Details
+
+### Homepage (homepage.png)
+- **Size**: 224KB
+- **Description**: Main landing page of the Career Advisor application
+- **Features Shown**: Welcome message, navigation, key features overview
+
+### Dashboard (dashboard.png)
+- **Size**: 80KB
+- **Description**: Primary dashboard view with user recommendations
+- **Features Shown**: Career recommendations, progress tracking, user profile
+
+### Dashboard Alternative (dashboard1.png)
+- **Size**: 71KB
+- **Description**: Alternative dashboard layout with different features
+- **Features Shown**: Different view of user data, charts, and analytics
+
+### Registration (regestration.png)
+- **Size**: 46KB
+- **Description**: User registration form interface
+- **Features Shown**: Form fields, validation, user input interface
 
 ## Usage
 
@@ -24,3 +42,4 @@ When adding new screenshots:
 2. Maintain consistent dimensions (800x400 recommended)
 3. Update this README with new image descriptions
 4. Update the main README.md with new image references
+5. Keep file sizes reasonable (under 100KB when possible)
