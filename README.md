@@ -37,6 +37,14 @@ An AI-powered personalized career and skills advisor platform designed specifica
 ![Registration](./images/regestration.png)
 *User registration form with detailed profile creation*
 
+### Image Gallery
+<div align="center">
+  <img src="./images/homepage.png" alt="Homepage" width="400"/>
+  <img src="./images/dashboard.png" alt="Dashboard" width="400"/>
+  <img src="./images/dashboard1.png" alt="Dashboard Alternative" width="400"/>
+  <img src="./images/regestration.png" alt="Registration" width="400"/>
+</div>
+
 ### Additional Features
 *More screenshots coming soon for Assessment, About Page, and Career Recommendations*
 
